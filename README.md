@@ -23,13 +23,33 @@ return [
 
   'roles' => [
     'default' => [
+      'group' => 'group_1',
       'name' => 'Default',
       'roles'=> ['post.view'],
     ],
     'editor' => [
+      'group' => 'group_1',
       'name' => 'Editor',
       'roles' => ['post.create','post.delete'],
       'inheritance' => 'default'
+    ],
+    
+    'default_page' => [
+      'group' => 'group_2',
+      'name' => 'Default',
+      'roles'=> ['post.view'],
+    ],
+    'editor_page' => [
+      'group' => 'group_2',
+      'name' => 'Editor',
+      'roles' => ['page.create','page.delete'],
+      'inheritance' => 'default_page'
+    ],
+    
+    'admin' => [
+      'name' => 'Administrator',
+      'roles' => ['user.create','user.delete'],
+      'inheritance' => ['editor_page','editor']
     ],
     
     ...
